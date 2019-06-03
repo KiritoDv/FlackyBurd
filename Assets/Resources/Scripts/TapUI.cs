@@ -13,7 +13,6 @@ public class TapUI : MonoBehaviour
         this.ctrl = GameObject.FindWithTag("GameController").GetComponent<GameController>();        
     }
 
-    // Update is called once per frame
     void Update()
     {        
         if(this.ctrl.gameStarted){            

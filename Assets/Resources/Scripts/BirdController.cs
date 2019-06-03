@@ -18,19 +18,32 @@ public class BirdController : MonoBehaviour
     public float downVel = 0.5f;
     public float minVel = 0.5f;
     public float maxVel = 0.8f;
-
     private GameController ctrl;
+
+    private bool randomColor = false;
     void Start()
     {
         this.ctrl = GameObject.FindWithTag("GameController").GetComponent<GameController>();
         rb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        StartCoroutine(secondsAlive());        
+        StartCoroutine(secondsAlive());
+
+        this.randomColor = Random.Range(0, 10) == 5;
+
+        foreach (Transform item in transform)
+        {
+            item.gameObject.GetComponent<SpriteRenderer>().color = Color.HSVToRGB(((Time.time*1000) % 1200L) / 1200.0F, 0.75F, 1.0F);
+        }
     }
 
     // Update is called once per frame
     void Update()
-    {
+    {    
+        if(this.randomColor){
+            foreach (Transform item in transform){
+                item.gameObject.GetComponent<SpriteRenderer>().color = Color.HSVToRGB(((Time.time*1000) % 1200L) / 1200.0F, 0.75F, 1.0F);
+            }
+        }    
         if (this.ctrl.gameStarted)
         {
             if (!this.ctrl.birdDie)
