@@ -14,7 +14,7 @@ public class SoundController : MonoBehaviour
     void Start(){
         this.dieSound.volume = volume;
         this.hitSound.volume = volume;
-        this.pointSound.volume = volume-0.05f;
+        this.pointSound.volume = 0.5f;
         this.wingSound.volume = volume;
     }
 
