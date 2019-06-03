@@ -25,7 +25,7 @@ public class BirdController : MonoBehaviour
         this.ctrl = GameObject.FindWithTag("GameController").GetComponent<GameController>();
         rb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        StartCoroutine(secondsAlive());
+        StartCoroutine(secondsAlive());        
     }
 
     // Update is called once per frame

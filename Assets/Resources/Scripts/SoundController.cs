@@ -9,4 +9,13 @@ public class SoundController : MonoBehaviour
     public AudioSource pointSound;
     public AudioSource wingSound;
     
+    public float volume = 0.01f;
+
+    void Start(){
+        this.dieSound.volume = volume;
+        this.hitSound.volume = volume;
+        this.pointSound.volume = volume-0.05f;
+        this.wingSound.volume = volume;
+    }
+
 }
