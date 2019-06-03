@@ -15,6 +15,7 @@
         "**/*.exe":true,
         "**/*.pdf":true,
         "**/*.mid":true,
+        "**/*.midi":true,
         "**/*.wav":true,
         "**/*.gif":true,
         "**/*.ico":true,

@@ -71,7 +71,7 @@ public class BirdController : MonoBehaviour
             {
                 this.ctrl.gameStarted = true;
                 this.rb2d.constraints = RigidbodyConstraints2D.None;
-                GameObject.FindWithTag("NDisplay").GetComponent<NDController>().initNDController();
+                //GameObject.FindWithTag("NDisplay").GetComponent<NDController>().initNDController();
             }
         }
         
@@ -87,17 +87,29 @@ public class BirdController : MonoBehaviour
     {
         if (collisionInfo.gameObject.name.Contains("Grass"))
         {
-            this.ctrl.birdDie = true;
+            if(!this.ctrl.birdDie){
+                this.ctrl.sound.hitSound.Play(0);
+                this.ctrl.sound.dieSound.Play(1);
+            }
+            this.ctrl.birdDie = true;            
             this.anim.enabled = false;
-            GetComponent<SpriteRenderer>().sprite = this.baseSprite;
+            GetComponent<SpriteRenderer>().sprite = this.baseSprite;            
         }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        this.ctrl.birdDie = true;
-        this.anim.enabled = false;
-        GetComponent<SpriteRenderer>().sprite = this.baseSprite;
+        if(other.name == "Dummy"){
+            this.ctrl.sound.pointSound.Play(0);
+        }else{
+            if(!this.ctrl.birdDie){
+                this.ctrl.sound.hitSound.Play(0);
+                this.ctrl.sound.dieSound.Play(1);
+            }
+            this.ctrl.birdDie = true;
+            this.anim.enabled = false;
+            GetComponent<SpriteRenderer>().sprite = this.baseSprite;
+        }     
     }
 
     IEnumerator secondsAlive()
