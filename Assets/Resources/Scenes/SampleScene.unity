@@ -3009,6 +3009,7 @@ GameObject:
   - component: {fileID: 1424125264}
   - component: {fileID: 1424125265}
   - component: {fileID: 1424125266}
+  - component: {fileID: 1424125267}
   m_Layer: 5
   m_Name: Points
   m_TagString: Untagged
@@ -3155,6 +3156,21 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1424125267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424125263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8a225d8f97ab3d4fbcf47bf31f2780b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeSpeed: 3
+  currentOpacity: 0
+  fadeIn: 1
 --- !u!1 &1473028499
 GameObject:
   m_ObjectHideFlags: 0
@@ -3483,6 +3499,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeSpeed: 3
+  currentOpacity: 1
+  fadeIn: 0
 --- !u!1 &1637770136
 GameObject:
   m_ObjectHideFlags: 0
@@ -3690,6 +3708,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeSpeed: 3
+  currentOpacity: 1
+  fadeIn: 0
 --- !u!1 &1856252856
 GameObject:
   m_ObjectHideFlags: 0
@@ -3724,7 +3744,7 @@ MonoBehaviour:
     type: 3}
   pipePrefabMin: {fileID: 7001181472684318701, guid: 7533e2a8d370d724da36811c06afb62f,
     type: 3}
-  genDelay: 1.5
+  genDelay: 1.6
   speed: 2
 --- !u!4 &1856252858
 Transform:

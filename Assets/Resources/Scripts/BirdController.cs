@@ -35,7 +35,7 @@ public class BirdController : MonoBehaviour
         {
             if (!this.ctrl.birdDie)
             {
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
                 {
                     transform.rotation = Quaternion.Euler(0, 0, 75);
                     this.rb2d.velocity = Vector2.zero;
@@ -46,7 +46,7 @@ public class BirdController : MonoBehaviour
             }
             else
             {
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
                 {
                     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 }
@@ -67,7 +67,7 @@ public class BirdController : MonoBehaviour
                 this.parMod = 0.0f;
             }
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
             {
                 this.ctrl.gameStarted = true;
                 this.rb2d.constraints = RigidbodyConstraints2D.None;
@@ -77,6 +77,10 @@ public class BirdController : MonoBehaviour
         
         Vector3 upper = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, 0));
         if(transform.position.y > upper.y+1){
+            if(!this.ctrl.birdDie){
+                this.ctrl.sound.hitSound.Play(0);
+                this.ctrl.sound.dieSound.Play(1);
+            }
             this.ctrl.birdDie = true;
             this.anim.enabled = false;
             GetComponent<SpriteRenderer>().sprite = this.baseSprite;
