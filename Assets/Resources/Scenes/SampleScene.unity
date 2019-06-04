@@ -4106,6 +4106,7 @@ MonoBehaviour:
   downVel: 2.3
   minVel: 0.65
   maxVel: 0.75
+  restartDelay: 0.35
 --- !u!95 &1935251908
 Animator:
   serializedVersion: 3

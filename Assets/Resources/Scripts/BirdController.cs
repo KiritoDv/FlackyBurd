@@ -19,10 +19,14 @@ public class BirdController : MonoBehaviour
     public float minVel = 0.5f;
     public float maxVel = 0.8f;
     private GameController ctrl;
-
     private bool randomColor = false;
+
+    public float restartDelay = 1;
+    private bool canRestart;
     void Start()
     {
+        this.canRestart = false;
+
         this.ctrl = GameObject.FindWithTag("GameController").GetComponent<GameController>();
         rb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();        
@@ -58,9 +62,13 @@ public class BirdController : MonoBehaviour
             }
             else
             {
-                if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
-                {
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                StartCoroutine(canRestartDelay());
+                
+                if(this.canRestart){
+                    if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
+                    {
+                        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                    }
                 }
             }
         }
@@ -97,6 +105,12 @@ public class BirdController : MonoBehaviour
             this.anim.enabled = false;
             GetComponent<SpriteRenderer>().sprite = this.baseSprite;
         }
+    }
+
+    IEnumerator canRestartDelay()
+    {        
+        yield return new WaitForSeconds(this.restartDelay);
+        this.canRestart = true;
     }
 
     void OnCollisionEnter2D(Collision2D collisionInfo)
