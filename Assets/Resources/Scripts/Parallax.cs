@@ -19,7 +19,7 @@ public class Parallax : MonoBehaviour
         this.gap = Mathf.Abs(l.x - u.x);
     }
 
-    void FixedUpdate()
+    void Update()
     {
         this.ctrl = GameObject.FindWithTag("GameController").GetComponent<GameController>();
         transform.position = setToVector(transform.position, 0, 0);

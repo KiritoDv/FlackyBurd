@@ -18,7 +18,7 @@ public class RandomPipes : MonoBehaviour
         this.ctrl = GameObject.FindWithTag("GameController").GetComponent<GameController>();
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if(!this.ctrl.birdDie && this.ctrl.gameStarted){
             foreach(Transform child in transform){
@@ -27,7 +27,7 @@ public class RandomPipes : MonoBehaviour
                 Vector3 lower = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0));
                 if(pipe.transform.position.x+2 < lower.x){
                     Destroy(pipe);
-                }
+                }                                
             }
         }
     }

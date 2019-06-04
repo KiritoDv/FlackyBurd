@@ -25,8 +25,7 @@ public class BirdController : MonoBehaviour
     {
         this.ctrl = GameObject.FindWithTag("GameController").GetComponent<GameController>();
         rb2d = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
-        StartCoroutine(secondsAlive());
+        anim = GetComponent<Animator>();        
 
         this.randomColor = Random.Range(0, 10) == 5;
 
@@ -53,7 +52,7 @@ public class BirdController : MonoBehaviour
                     transform.rotation = Quaternion.Euler(0, 0, 75);
                     this.rb2d.velocity = Vector2.zero;
                     this.rb2d.AddForce(new Vector2(0, upForce));
-                    this.ctrl.sound.wingSound.Play(0);
+                    this.ctrl.sound.wingSound.PlayDelayed(0);
                 }
                 transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, -90), downVel * Time.deltaTime);
             }
@@ -91,8 +90,8 @@ public class BirdController : MonoBehaviour
         Vector3 upper = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, 0));
         if(transform.position.y > upper.y+1){
             if(!this.ctrl.birdDie){
-                this.ctrl.sound.hitSound.Play(0);
-                this.ctrl.sound.dieSound.Play(1);
+                this.ctrl.sound.hitSound.PlayDelayed(0);
+                this.ctrl.sound.dieSound.PlayDelayed(1);
             }
             this.ctrl.birdDie = true;
             this.anim.enabled = false;
@@ -105,8 +104,8 @@ public class BirdController : MonoBehaviour
         if (collisionInfo.gameObject.name.Contains("Grass"))
         {
             if(!this.ctrl.birdDie){
-                this.ctrl.sound.hitSound.Play(0);
-                this.ctrl.sound.dieSound.Play(1);
+                this.ctrl.sound.hitSound.PlayDelayed(0);
+                this.ctrl.sound.dieSound.PlayDelayed(1);
             }
             this.ctrl.birdDie = true;            
             this.anim.enabled = false;
@@ -117,26 +116,18 @@ public class BirdController : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.name == "Dummy"){
-            this.ctrl.sound.pointSound.Play(0);
+            this.ctrl.sound.pointSound.PlayDelayed(0);
+            if (!this.ctrl.birdDie && this.ctrl.gameStarted)
+                this.seconds++;
         }else{
             if(!this.ctrl.birdDie){
-                this.ctrl.sound.hitSound.Play(0);
-                this.ctrl.sound.dieSound.Play(1);
+                this.ctrl.sound.hitSound.PlayDelayed(0);
+                this.ctrl.sound.dieSound.PlayDelayed(1);
             }
             this.ctrl.birdDie = true;
             this.anim.enabled = false;
             GetComponent<SpriteRenderer>().sprite = this.baseSprite;
         }     
-    }
-
-    IEnumerator secondsAlive()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(1);
-            if (!this.ctrl.birdDie && this.ctrl.gameStarted)
-                this.seconds++;
-        }
     }
 
     public float Round(float value, int digits)

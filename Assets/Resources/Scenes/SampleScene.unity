@@ -4103,10 +4103,9 @@ MonoBehaviour:
   baseSprite: {fileID: -3551287784963028691, guid: dc218385b53f24947b93cd946ae4c116,
     type: 3}
   seconds: 0
-  downVel: 2.5
+  downVel: 2.3
   minVel: 0.65
   maxVel: 0.75
-  randomColor: 0
 --- !u!95 &1935251908
 Animator:
   serializedVersion: 3
