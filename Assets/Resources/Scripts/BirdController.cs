@@ -99,7 +99,7 @@ public class BirdController : MonoBehaviour
         if(transform.position.y > upper.y+1){
             if(!this.ctrl.birdDie){
                 this.ctrl.sound.hitSound.PlayDelayed(0);
-                this.ctrl.sound.dieSound.PlayDelayed(1);
+                this.ctrl.sound.dieSound.PlayDelayed(0.13f);
             }
             this.ctrl.birdDie = true;
             this.anim.enabled = false;
@@ -119,7 +119,7 @@ public class BirdController : MonoBehaviour
         {
             if(!this.ctrl.birdDie){
                 this.ctrl.sound.hitSound.PlayDelayed(0);
-                this.ctrl.sound.dieSound.PlayDelayed(1);
+                this.ctrl.sound.dieSound.PlayDelayed(0.13f);
             }
             this.ctrl.birdDie = true;            
             this.anim.enabled = false;
@@ -136,7 +136,7 @@ public class BirdController : MonoBehaviour
         }else{
             if(!this.ctrl.birdDie){
                 this.ctrl.sound.hitSound.PlayDelayed(0);
-                this.ctrl.sound.dieSound.PlayDelayed(1);
+                this.ctrl.sound.dieSound.PlayDelayed(0.13f);
             }
             this.ctrl.birdDie = true;
             this.anim.enabled = false;

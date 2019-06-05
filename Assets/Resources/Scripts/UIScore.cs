@@ -35,5 +35,7 @@ public class UIScore : MonoBehaviour
 
         this.sec.enabled = this.ctrl.gameStarted && !this.ctrl.birdDie;
         this.sec.text = ""+this.ctrl.bird.seconds;
+        if(this.ctrl.birdDie)
+            GameObject.FindWithTag("AlignerUI").GetComponent<AlignerUI>().ResetFade();
     }
 }
